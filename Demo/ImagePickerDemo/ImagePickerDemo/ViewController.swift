@@ -1,6 +1,5 @@
 import UIKit
 import ImagePicker
-import Lightbox
 
 class ViewController: UIViewController, ImagePickerDelegate {
 
@@ -30,27 +29,21 @@ class ViewController: UIViewController, ImagePickerDelegate {
     let imagePicker = ImagePickerController()
     imagePicker.delegate = self
 
-    presentViewController(imagePicker, animated: true, completion: nil)
+    present(imagePicker, animated: true, completion: nil)
   }
 
   // MARK: - ImagePickerDelegate
 
   func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-    imagePicker.dismissViewControllerAnimated(true, completion: nil)
+    imagePicker.dismiss(animated: true, completion: nil)
   }
 
   func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
     guard images.count > 0 else { return }
 
-    let lightboxImages = images.map {
-      return LightboxImage(image: $0)
-    }
-
-    let lightbox = LightboxController(images: lightboxImages, startIndex: 0)
-    imagePicker.presentViewController(lightbox, animated: true, completion: nil)
   }
 
   func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-    imagePicker.dismissViewControllerAnimated(true, completion: nil)
+    imagePicker.dismiss(animated: true, completion: nil)
   }
 }

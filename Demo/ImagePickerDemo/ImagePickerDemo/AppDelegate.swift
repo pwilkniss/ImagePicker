@@ -3,10 +3,11 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  lazy var window: UIWindow? = UIWindow(frame: UIScreen.main().bounds)
+  var window: UIWindow?
 
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) ->  Bool {
 
+    window = UIWindow(frame: UIScreen.main().bounds)
     window?.rootViewController = ViewController()
     window?.makeKeyAndVisible()
     

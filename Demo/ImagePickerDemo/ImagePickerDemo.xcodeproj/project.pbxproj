@@ -155,7 +155,8 @@
 				TargetAttributes = {
 					29D699D81B70ABFC0021FA73 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = LG4DBY4QF9;
+						DevelopmentTeam = 2PGY6D8X3C;
+						DevelopmentTeamName = "bKeepers Inc.";
 						LastSwiftMigration = 0800;
 					};
 				};
