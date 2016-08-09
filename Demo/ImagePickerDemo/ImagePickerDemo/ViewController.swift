@@ -9,24 +9,24 @@ class ViewController: UIViewController, ImagePickerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    view.backgroundColor = UIColor.whiteColor()
+    view.backgroundColor = UIColor.white()
     view.addSubview(button)
     button.translatesAutoresizingMaskIntoConstraints = false
 
-    view.addConstraint(NSLayoutConstraint(item: button, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1, constant: 0))
-    view.addConstraint(NSLayoutConstraint(item: button, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1, constant: 0))
+    view.addConstraint(NSLayoutConstraint(item: button, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0))
+    view.addConstraint(NSLayoutConstraint(item: button, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0))
   }
 
   func makeButton() -> UIButton {
     let button = UIButton()
-    button.setTitle("Show ImagePicker", forState: .Normal)
-    button.setTitleColor(UIColor.blackColor(), forState: .Normal)
-    button.addTarget(self, action: #selector(buttonTouched(_:)), forControlEvents: .TouchUpInside)
+    button.setTitle("Show ImagePicker", for: UIControlState())
+    button.setTitleColor(UIColor.black(), for: UIControlState())
+    button.addTarget(self, action: #selector(buttonTouched(_:)), for: .touchUpInside)
 
     return button
   }
 
-  func buttonTouched(button: UIButton) {
+  func buttonTouched(_ button: UIButton) {
     let imagePicker = ImagePickerController()
     imagePicker.delegate = self
 
@@ -35,11 +35,11 @@ class ViewController: UIViewController, ImagePickerDelegate {
 
   // MARK: - ImagePickerDelegate
 
-  func cancelButtonDidPress(imagePicker: ImagePickerController) {
+  func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
     imagePicker.dismissViewControllerAnimated(true, completion: nil)
   }
 
-  func wrapperDidPress(imagePicker: ImagePickerController, images: [UIImage]) {
+  func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
     guard images.count > 0 else { return }
 
     let lightboxImages = images.map {
@@ -50,7 +50,7 @@ class ViewController: UIViewController, ImagePickerDelegate {
     imagePicker.presentViewController(lightbox, animated: true, completion: nil)
   }
 
-  func doneButtonDidPress(imagePicker: ImagePickerController, images: [UIImage]) {
+  func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
     imagePicker.dismissViewControllerAnimated(true, completion: nil)
   }
 }
